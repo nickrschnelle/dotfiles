@@ -1,5 +1,6 @@
 inoremap jk <esc>
 set encoding=UTF-8
+set autoread
 set nocompatible
 let mapleader = "'"
 set number
@@ -15,6 +16,11 @@ set smartindent
 set shiftwidth=2
 set scrolloff=5
 set laststatus=2
+set relativenumber
+set nu
+set nowrap
+set hidden
+
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ }
@@ -23,6 +29,10 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
+
+let @c = "oconsole.log('',);jkhhhh\"0pll\"0p'"
+let @l = "yiwoconsole.log('',);jkhhhh\"0pll\"0p'"
 
 call plug#begin()
 Plug 'yuezk/vim-js'
@@ -35,6 +45,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
+Plug 'https://github.com/airblade/vim-rooter.git'
 call plug#end()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -52,6 +63,6 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
-
+let g:onedark_termcolors=256
 syntax on
 colorscheme onedark
