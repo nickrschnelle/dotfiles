@@ -1,8 +1,12 @@
+" https://www.atlassian.com/git/tutorials/dotfiles
+let mapleader = " "
 inoremap jk <esc>
+nnoremap <leader>fl :Files<CR>
+nnoremap <leader>gfl :GFiles<CR>
+nnoremap <leader>el :Ex<CR>
 set encoding=UTF-8
 set autoread
 set nocompatible
-let mapleader = "'"
 set number
 set noswapfile
 set hlsearch
@@ -17,6 +21,7 @@ set shiftwidth=2
 set scrolloff=5
 set laststatus=2
 set relativenumber
+set signcolumn=yes
 set nu
 set nowrap
 set hidden
@@ -42,10 +47,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'mattn/emmet-vim'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jiangmiao/auto-pairs'
+Plug 'wellle/context.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/airblade/vim-rooter.git'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -65,4 +73,5 @@ if (empty($TMUX))
 endif
 let g:onedark_termcolors=256
 syntax on
+set re=0
 colorscheme onedark
