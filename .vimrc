@@ -4,6 +4,23 @@ inoremap jk <esc>
 nnoremap <leader>fl :Files<CR>
 nnoremap <leader>gfl :GFiles<CR>
 nnoremap <leader>el :Ex<CR>
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-@> coc#refresh()
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+set completeopt-=preview
 set encoding=UTF-8
 set autoread
 set nocompatible
@@ -49,11 +66,12 @@ Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 Plug 'wellle/context.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/airblade/vim-rooter.git'
 Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
