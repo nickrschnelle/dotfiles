@@ -1,14 +1,21 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
-
+ZSH_THEME="powerlevel10k/powerlevel10k"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -69,10 +76,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git 
-  vi-mode
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,35 +106,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias config='/usr/bin/git --git-dir=/Users/nickschnelle/.cfg/ --work-tree=/Users/nickschnelle'
-
-# pnpm
-export PNPM_HOME="/Users/nickschnelle/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-okta-sandpit1() {
-  docker run --rm -it \
-    -v ~/.aws:/root/.aws \
-    --entrypoint=oktashell cmdlabs/okta-utils:latest \
-    -u nick.schnelle \
-    -a cmdlab-sandpit1 \
-    -m push \
-    -o arn:aws:iam::722141136946:role/cmdlab-role-console-breakglass \
-    -p cmdlab-sandpit1 \
-    -d 43200
-}
-
-okta-sandpit2() {
-  docker run --rm -it \
-    -v ~/.aws:/root/.aws \
-    --entrypoint=oktashell cmdlabs/okta-utils:latest \
-    -u nick.schnelle \
-    -a cmdlab-sandpit2 \
-    -m push \
-    -o arn:aws:iam::354334841216:role/cmdlab-role-console-breakglass \
-    -p cmdlab-sandpit2 \
-    -d 43200
-}
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
