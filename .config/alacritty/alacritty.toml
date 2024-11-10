@@ -1,11 +1,17 @@
-import = [
-  "~/.config/alacritty/catppuccin-frappe.toml"
-]
 
 [window]
 decorations = "None"
 opacity = 0.76
+padding = { x = 2, y = 2 } 
 
 [font]
 normal = { family = "MesloLGS NF" }
 size = 16
+
+[selection]
+save_to_clipboard = true
+
+[general]
+import = [
+  "~/.config/alacritty/catppuccin-frappe.toml"
+]
