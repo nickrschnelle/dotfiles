@@ -111,3 +111,4 @@ export PATH=$PATH:~/.zig/0.13.0-dev
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export ODIN_SHARED="$HOME/dev/odin/shared"

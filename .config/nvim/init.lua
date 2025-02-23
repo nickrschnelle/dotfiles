@@ -718,6 +718,11 @@ require("lazy").setup({
 		end,
 	},
 	{ "itchyny/lightline.vim" },
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+	},
 
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
