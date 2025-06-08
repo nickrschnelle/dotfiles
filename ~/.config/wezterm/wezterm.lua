@@ -1,0 +1,1 @@
+/home/nsc/dotfiles/.config/wezterm/wezterm.lua
