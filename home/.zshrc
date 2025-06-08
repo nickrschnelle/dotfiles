@@ -78,9 +78,6 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.json)"
-eval "$(zoxide init zsh)"
-
 alias lls="/usr/bin/ls"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --all --sort=type"
 
@@ -90,4 +87,8 @@ alias cd="z"
 # Sesh binds
 alias sl="sesh connect \$(sesh list | fzf)"
 DISABLE_AUTO_TITLE="true"
-export PATH=$PATH:/usr/local/go/bin:$HOME/bin/sesh
+export PATH=$PATH:/usr/local/go/bin:$HOME/bin/sesh:$HOME/bin/oh-my-posh
+
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.json)"
+eval "$(zoxide init zsh)"
+
