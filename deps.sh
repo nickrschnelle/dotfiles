@@ -38,7 +38,7 @@ install_if_missing oh-my-posh curl -s https://ohmyposh.dev/install.sh | bash -s 
 echo "Installing homebrew"
 install_if_missing brew /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-source ~/.zshrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 echo "Installing fzf"
 install_if_missing fzf brew install fzf
@@ -55,6 +55,11 @@ if ! check "bat"; then
 else
   echo "bat is already installed"
 fi
+
+echo "Installing fzf-git"
+cd $HOME/bin
+git clone https://github.com/junegunn/fzf-git.sh.git
+cd $return_dir
 
 echo "Installing zoxide"
 install_if_missing brew install zoxide
