@@ -1,0 +1,26 @@
+[[session]]
+name = "dev-rename"
+windows = [ "fe nvim", "fe serve", "fe cli", "be nvim", "be serve", "be cli" ]
+startup_command = "tmux rename-session \"$(bash -c 'read -rp \"Enter new session name: \" name; echo \"$name\"')\""
+
+[[window]]
+name = "fe nvim"
+startup_command = "nvim ."
+
+[[window]]
+name = "fe serve"
+
+[[window]]
+name = "fe cli"
+
+[[window]]
+name = "be nvim"
+startup_command = "nvim ."
+
+[[window]]
+name = "be serve"
+
+[[window]]
+name = "be cli"
+
+blacklist = ["~/foo"]
