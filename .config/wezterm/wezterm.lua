@@ -9,8 +9,8 @@ config.window_padding = {
 }
 config.color_scheme = "Catppuccin Frappe"
 
-config.window_background_opacity = 0.8
-config.window_decorations = "RESIZE"
+config.window_background_opacity = 0.95
+--config.window_decorations = "RESIZE"
 config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 16.0
 
