@@ -45,9 +45,3 @@ function fish_user_key_bindings
 end
 
 set -g fish_key_bindings fish_default_key_bindings
-
-# Seed tide config when items are unset (e.g. after fresh link wipes fish_variables)
-if set -q _tide_left_items && test (count $_tide_left_items) -eq 0
-    set -U _tide_left_items pwd git newline character
-    set -U _tide_right_items status cmd_duration context jobs direnv node python java ruby go kubectl aws
-end
