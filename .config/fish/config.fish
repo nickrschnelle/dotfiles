@@ -18,11 +18,26 @@ else
     set -gx EDITOR nvim
 end
 
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
+
 # zoxide (replaces cd)
 if command -q zoxide
     zoxide init fish | source
     alias cd="z"
 end
+
 alias cdd="builtin cd"
 
 # fzf
@@ -45,3 +60,9 @@ function fish_user_key_bindings
 end
 
 set -g fish_key_bindings fish_default_key_bindings
+
+# Seed tide config when items are unset (e.g. after fresh link wipes fish_variables)
+if set -q _tide_left_items && test (count $_tide_left_items) -eq 0
+    set -U _tide_left_items pwd git newline character
+    set -U _tide_right_items status cmd_duration context jobs direnv node python java ruby go kubectl aws
+end
